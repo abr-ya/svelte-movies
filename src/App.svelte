@@ -1,14 +1,15 @@
 <script>
-
+	// components
+	import Home from './pages/Home.svelte';
 </script>
 
-App
+<Home />
 
 <style>
-  :global(body) {
-    font-family: 'Abel', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+	:global(body) {
+		font-family: 'Abel', sans-serif;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 </style>

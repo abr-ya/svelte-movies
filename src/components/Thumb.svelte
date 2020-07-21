@@ -2,6 +2,8 @@
 
 </script>
 
+Thumb <br/>
+
 <style>
   .wrapper {
     height: 100%;
