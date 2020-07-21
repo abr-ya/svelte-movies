@@ -2,8 +2,14 @@
 	import {onMount} from 'svelte';
 	import {fetchMovies} from '../api';
 
+	// config
+	import {
+		IMAGE_BASE_URL,
+		BACKDROP_SIZE,
+		POSTER_SIZE,
+	} from '../config';
+
 	// components
-	import Header from '../components/Header.svelte';
 	import Hero from '../components/Hero.svelte';
 	import Search from '../components/Search.svelte';
 	import Grid from '../components/Grid.svelte';
@@ -29,18 +35,52 @@
 		isLoading = false;
 	};
 
+	const handleSearch = event => {
+		//console.log(event);
+		searchTerm = event.detail.searchText;
+		movies.movies = [];
+		handleFetchMovies(false, searchTerm)
+	};
+
+	const handleLoadMore = () => handleFetchMovies(true, searchTerm);
+
 	onMount(async() => {
 		handleFetchMovies(false, searchTerm);
 	});
 </script>
 
-<Header />
-<Hero />
-<Search />
-<Grid />
-<Thumb />
-<LoadMoreButton />
-<Spinner />
+{#if error}
+	<p>Something went wrong...</p>
+{:else}
+	{#if movies.heroImage} <!-- && !searchTerm -->
+		<Hero
+			image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${movies.heroImage.backdrop_path}`}
+			title={movies.heroImage.original_title}
+			text={movies.heroImage.overview}
+		/>
+	{/if}
+{/if}
+
+<Search on:search={handleSearch} />
+<Grid header={searchTerm ? 'Search result' : 'Popular movies'}>
+	{#each movies.movies as movie}
+		<Thumb
+			clickable
+			image={movie.poster_path && IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path}
+			movieId={movie.id}
+		/>
+	{/each}
+</Grid>
+
+{#if isLoading}
+	<Spinner />
+{/if}
+
+{#if !isLoading && movies.currentPage < movies.totalPages}
+	<LoadMoreButton on:loadMore={handleLoadMore}>
+		Load More
+	</LoadMoreButton>
+{/if}
 
 <style>
 
