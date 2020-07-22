@@ -3,12 +3,14 @@
 	export let image;
 	export let title;
 	export let text;
+	export let popularity;
 </script>
 
 <div class="wrapper" style="--image: url({image})">
 	<div class="content">
 		<div class="text">
 			<h1>{title}</h1>
+			<p class="comment">(the most popular: {popularity})</p>
 			<p>{text}</p>
 		</div>
 	</div>
@@ -35,6 +37,11 @@
 		margin: 0 auto;
 	}
 
+	.comment {
+		margin-top: 0;
+		font-size: 14px;
+	}
+
 	.text {
 		z-index: 100;
 		max-width: 700px;
@@ -46,6 +53,7 @@
 	}
 
 	h1 {
+		margin-bottom: 0;
 		font-size: 48px;
 		color: #fff;
 	}

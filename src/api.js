@@ -20,7 +20,7 @@ export const fetchMovies = async (movies, loadMore, searchTerm) => {
 		movies: loadMore 
 			? [...movies.movies, ...result.results]
 			: [...result.results],
-		heroImage: result.results[0], // movies.heroImage || result.results[0],
+		heroImage: movies.heroImage || result.results[0],
 		currentPage: result.page,
 		totalPages: result.total_pages,
 	}

@@ -28,7 +28,7 @@
 			isLoading = true;
 			error = false;
 			movies = await fetchMovies(movies, loadMore, searchTerm)
-			// console.log(movies); // посмотреть подгруженные фильмы
+			//console.log(movies); // посмотреть подгруженные фильмы
 		} catch (err) {
 			error = true;
 		}
@@ -57,6 +57,7 @@
 			image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${movies.heroImage.backdrop_path}`}
 			title={movies.heroImage.original_title}
 			text={movies.heroImage.overview}
+			popularity={movies.heroImage.popularity}
 		/>
 	{/if}
 {/if}
