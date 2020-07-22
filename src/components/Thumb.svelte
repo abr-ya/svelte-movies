@@ -8,7 +8,7 @@
 
 <div class="wrapper">
 	{#if clickable}
-		<a href="https://www.themoviedb.org/movie/{movieId}" target="_blank">
+		<a href="movie/{movieId}">
 			<!-- https://www.themoviedb.org/ убрать --> 
 			<img src={image ? image : noImage} alt="moviethumb" class="clickable">
 		</a>

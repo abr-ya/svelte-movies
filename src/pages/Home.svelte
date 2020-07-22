@@ -28,7 +28,7 @@
 			isLoading = true;
 			error = false;
 			movies = await fetchMovies(movies, loadMore, searchTerm)
-			console.log(movies);
+			// console.log(movies); // посмотреть подгруженные фильмы
 		} catch (err) {
 			error = true;
 		}

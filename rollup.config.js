@@ -21,8 +21,6 @@ export default {
 			process: JSON.stringify({
 				env: {
 					API_KEY: production ? process.env.API_KEY : config().parsed.API_KEY,
-					PROD: production, // для теста
-					//API_KEY: production,
 				}
 			})
 		}),

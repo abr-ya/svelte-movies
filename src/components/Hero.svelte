@@ -25,7 +25,7 @@
 			var(--image), #1c1c1c;
 		background-size: 100%, cover;
 		background-position: center, center;
-		height: 500px;
+		height: 600px;
 		position: relative;
 	}
 
