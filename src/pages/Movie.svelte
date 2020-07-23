@@ -22,7 +22,7 @@
 			isLoading = true;
 			error = false;
 			movie = await fetchMovie(params.id)
-			console.log(movie); // посмотреть свойства фильма
+			// console.log(movie); // посмотреть свойства фильма
 		} catch (err) {
 			error = true;
 		}
@@ -40,9 +40,16 @@
 	<div transition:fade={{duration: 300}}>
 		<Navigation movie={movie.title} />
 		<MovieInfo {movie} />
-		<MovieInfoBar />
-		<Actor />
-		<Grid header="Actors" />
+		<MovieInfoBar
+			time={movie.runtime}
+			budget={movie.budget}
+			revenue={movie.revenue}
+		/>
+		<Grid header="Actors">
+			{#each movie.actors as actor}
+				<Actor {actor} />
+			{/each}
+		</Grid>
 	</div>
 {/if}
 

@@ -16,6 +16,8 @@ const BACKDROP_SIZE = 'w1280';
 // w92, w154, w185, w342, w500, w780, original
 const POSTER_SIZE = 'w500';
 
+const NO_IMG = '/images/no-image.jpg';
+
 export {
   SEARCH_BASE_URL,
   POPULAR_BASE_URL,
@@ -25,4 +27,6 @@ export {
   POSTER_SIZE,
   MOVIE_ENDPOINT,
   CREDITS_ENDPOINT,
+  NO_IMG,
 };
+

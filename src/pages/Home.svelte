@@ -45,8 +45,20 @@
 	const handleLoadMore = () => handleFetchMovies(true, searchTerm);
 
 	onMount(async() => {
-		handleFetchMovies(false, searchTerm);
+		const sessionMovies = window.sessionStorage.getItem('svelte-movies');
+		if (sessionMovies && 0) {
+			console.log('!');
+			movies = JSON.parse(sessionMovies);
+		} else {
+			handleFetchMovies(false, searchTerm);
+		}
 	});
+
+	$: {
+		if (movies.movies.length > 0) {
+			window.sessionStorage.setItem('svelte-movies', JSON.stringify(movies));
+		}
+	}
 </script>
 
 {#if error}
